@@ -1,15 +1,20 @@
-import { Controller, Post, Res } from '@nestjs/common';
+import { Controller, Post, Req, Res } from '@nestjs/common';
 import { GeminiService } from './gemini.service';
-import { Response } from 'express';
+import { Response, Request } from 'express';
 
 @Controller('gemini')
 export class GeminiController {
   constructor(private readonly geminiService: GeminiService) {}
 
   @Post('request')
-  async getGeminiResponse(@Res() res: Response): Promise<void> {
+  async getGeminiResponse(
+    @Req() req: Request,
+    @Res() res: Response,
+  ): Promise<void> {
+    const { prompt } = req.body;
+
     try {
-      const AIResponse = await this.geminiService.getResponse();
+      const AIResponse = await this.geminiService.getResponse(prompt);
       console.log(AIResponse);
       res.send(AIResponse);
     } catch (error) {
