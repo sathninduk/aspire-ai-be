@@ -4,7 +4,7 @@ import axios from 'axios';
 import config from '../../../config/config';
 
 @Injectable()
-export class GeminiService {
+export class AiService {
   constructor(private readonly httpService: HttpService) {}
 
   async getResponse(prompt: string): Promise<any> {
