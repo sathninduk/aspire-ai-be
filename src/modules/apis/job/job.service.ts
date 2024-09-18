@@ -16,8 +16,6 @@ export class JobService {
       location,
       page,
     );
-    console.log(jobs.jobs);
-    // return null;
     return jobs.jobs.map((job: any) => ({
       position: job.title,
       company: job.company,
