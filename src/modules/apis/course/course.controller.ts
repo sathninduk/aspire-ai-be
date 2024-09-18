@@ -18,7 +18,6 @@ export class CourseController {
 
     try {
       const response = await this.courseService.getResponse(keyword as string);
-      console.log(response);
       res.send(response);
     } catch (error) {
       console.error(error);

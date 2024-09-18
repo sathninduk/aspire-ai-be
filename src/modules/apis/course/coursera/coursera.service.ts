@@ -1,14 +1,10 @@
-import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 
 @Injectable()
 export class CourseraService {
-  constructor(private readonly httpService: HttpService) {}
-
-  async findCourses(): Promise<any> {
-    const url =
-      'https://api.coursera.org/api/courses.v1?q=search&query=sql tuning';
+  async findCourseraCourses(keyword: string): Promise<any> {
+    const url = `https://api.coursera.org/api/courses.v1?q=search&query=${keyword}`;
     try {
       const response = await axios.get(url);
       console.log(response.data);
