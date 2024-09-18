@@ -1,13 +1,13 @@
 import { Controller, Get, Req, Res } from '@nestjs/common';
-import { CourseService } from './course.service';
+import { JobService } from './job.service';
 import { Response, Request } from 'express';
 
-@Controller('course')
-export class CourseController {
-  constructor(private readonly courseService: CourseService) {}
+@Controller('job')
+export class JobController {
+  constructor(private readonly jobService: JobService) {}
 
   @Get('')
-  async getCourseResponse(
+  async getJobResponse(
     @Req() req: Request,
     @Res() res: Response,
   ): Promise<void> {
@@ -17,7 +17,7 @@ export class CourseController {
       : req.query.keyword;
 
     try {
-      const response = await this.courseService.getResponse(keyword as string);
+      const response = await this.jobService.getResponse(keyword as string);
       res.send(response);
     } catch (error) {
       console.error(error);
