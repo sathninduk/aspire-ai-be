@@ -15,7 +15,6 @@ export class AiController {
 
     try {
       const AIResponse = await this.aiService.getResponse(prompt);
-      console.log(AIResponse);
       res.send(AIResponse);
     } catch (error) {
       console.error(error);

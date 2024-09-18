@@ -11,13 +11,14 @@ export class JobController {
     @Req() req: Request,
     @Res() res: Response,
   ): Promise<void> {
-    // get keyword from query parameters
-    const keyword = Array.isArray(req.query.keyword)
-      ? req.query.keyword[0]
-      : req.query.keyword;
+    const { keyword, location, page } = req.query;
 
     try {
-      const response = await this.jobService.getResponse(keyword as string);
+      const response = await this.jobService.getResponse(
+        keyword as string,
+        location as string,
+        page as string,
+      );
       res.send(response);
     } catch (error) {
       console.error(error);

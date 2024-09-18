@@ -11,6 +11,7 @@ export class CourseService {
     return courses.elements.map((course: any) => ({
       title: course.name,
       url: `https://www.coursera.org/learn/${course.slug}`,
+      source: `Coursera`,
     }));
   }
 }
