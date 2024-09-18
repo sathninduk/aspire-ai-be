@@ -1,4 +1,4 @@
-import { Controller, Get, Req, Res } from '@nestjs/common';
+import { Controller, Post, Req, Res } from '@nestjs/common';
 import { JobService } from './job.service';
 import { Response, Request } from 'express';
 
@@ -6,18 +6,19 @@ import { Response, Request } from 'express';
 export class JobController {
   constructor(private readonly jobService: JobService) {}
 
-  @Get('')
+  @Post('')
   async getJobResponse(
     @Req() req: Request,
     @Res() res: Response,
   ): Promise<void> {
-    // get keyword from query parameters
-    const keyword = Array.isArray(req.query.keyword)
-      ? req.query.keyword[0]
-      : req.query.keyword;
+    const { keyword, location, page } = req.body;
 
     try {
-      const response = await this.jobService.getResponse(keyword as string);
+      const response = await this.jobService.getResponse(
+        keyword as string,
+        location as string,
+        page as string,
+      );
       res.send(response);
     } catch (error) {
       console.error(error);

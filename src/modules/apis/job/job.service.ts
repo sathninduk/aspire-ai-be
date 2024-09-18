@@ -6,11 +6,24 @@ import { Job } from './job.interface';
 export class JobService {
   constructor(private readonly courseraService: JoobleService) {}
 
-  async getResponse(keyword: string): Promise<Job[]> {
-    const courses = await this.courseraService.findJoobleJobs(keyword);
-    return courses.elements.map((course: any) => ({
-      title: course.name,
-      url: `https://www.coursera.org/learn/${course.slug}`,
+  async getResponse(
+    keyword: string,
+    location: string,
+    page: string,
+  ): Promise<Job[]> {
+    const jobs = await this.courseraService.findJoobleJobs(
+      keyword,
+      location,
+      page,
+    );
+    console.log(jobs.jobs);
+    // return null;
+    return jobs.jobs.map((job: any) => ({
+      position: job.title,
+      company: job.company,
+      location: job.location,
+      url: job.link,
+      source: job.source,
     }));
   }
 }
