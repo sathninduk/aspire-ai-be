@@ -5,6 +5,6 @@ export class LoginService {
   constructor() {}
   async getResponse(number: string): Promise<any> {
     console.log('LoginService.getResponse', number);
-    return null;
+    return {};
   }
 }
