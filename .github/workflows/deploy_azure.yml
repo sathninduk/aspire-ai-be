@@ -1,0 +1,25 @@
+name: Deploy to Azure VM
+on:
+  push:
+    branches: [ main ]  # Trigger on pushes to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3  # Checkout code from the repository
+
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
+      - name: Deploy to Azure VM
+        run: |
+          sshpass -p "${{ secrets.AZURE_VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.AZURE_VM_USER }}@${{ secrets.AZURE_VM_IP }} "
+            sudo rm -rf ./aspire/aspire-be
+            sudo git clone https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_ACCESS_TOKEN }}@github.com/sathninduk/aspire-ai-be.git ./aspire/aspire-be
+            cd ./aspire/aspire-be
+            sudo docker stop aspire-be
+            sudo docker rm aspire-be
+            sudo docker build -t aspire-be:latest .
+            sudo docker run -d --name aspire-be -p 6340:6340 aspire-be:latest"
