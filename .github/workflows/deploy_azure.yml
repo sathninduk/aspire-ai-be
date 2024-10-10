@@ -19,7 +19,5 @@ jobs:
             sudo rm -rf ./aspire/aspire-be
             sudo git clone https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_ACCESS_TOKEN }}@github.com/sathninduk/aspire-ai-be.git ./aspire/aspire-be
             cd ./aspire/aspire-be
-            sudo docker stop aspire-be
-            sudo docker rm aspire-be
             sudo docker build -t aspire-be:latest .
             sudo docker run -d --name aspire-be -p 6340:6340 aspire-be:latest"
