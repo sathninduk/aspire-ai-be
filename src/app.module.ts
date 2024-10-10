@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CourseModule } from './modules/apis/course/course.module';
@@ -8,6 +9,7 @@ import { InterviewModule } from './modules/apis/interview/interview.module';
 import { LoginModule } from './modules/apis/login/login.module';
 import { SignupModule } from './modules/apis/signup/signup.module';
 import { UserModule } from './modules/apis/user/user.module';
+import config from './config/config';
 
 @Module({
   imports: [
@@ -16,6 +18,7 @@ import { UserModule } from './modules/apis/user/user.module';
     AiModule,
     InterviewModule,
     LoginModule,
+    MongooseModule.forRoot(config.mongoDB.url),
     SignupModule,
     UserModule,
   ],
