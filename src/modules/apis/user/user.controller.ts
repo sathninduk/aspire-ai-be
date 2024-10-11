@@ -6,7 +6,7 @@ import { Response, Request } from 'express';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('')
+  @Get(':number')
   async getUsers(@Req() req: Request, @Res() res: Response): Promise<void> {
     const { number } = req.params;
     try {
