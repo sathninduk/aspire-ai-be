@@ -13,6 +13,6 @@ import { AiModule } from '../ai/ai.module';
   ],
   controllers: [UserController],
   providers: [UserService],
-  exports: [UserService],
+  exports: [UserService, MongooseModule],
 })
 export class UserModule {}
