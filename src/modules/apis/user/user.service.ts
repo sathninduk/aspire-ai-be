@@ -64,4 +64,22 @@ export class UserService {
     );
     return updatedUser;
   }
+
+  async updateAnswer1(number: string, answer_1: string): Promise<any> {
+    const updatedUser = await this.userModel.findOneAndUpdate(
+      { number },
+      { $set: { answer_1 } },
+      { new: true },
+    );
+    return updatedUser;
+  }
+
+  async updateAnswer2(number: string, answer_2: string): Promise<any> {
+    const updatedUser = await this.userModel.findOneAndUpdate(
+      { number },
+      { $set: { answer_2 } },
+      { new: true },
+    );
+    return updatedUser;
+  }
 }
