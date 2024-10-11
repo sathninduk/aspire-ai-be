@@ -35,7 +35,7 @@ export class User extends Document {
   answer_2: string;
 
   @Prop({ required: false })
-  skills: string[];
+  skills: any[];
 
   @Prop({ required: false })
   careers: string[];
