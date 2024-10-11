@@ -21,7 +21,7 @@ export class JobService {
       keyword,
       location,
       page,
-      "10",
+      '10',
     );
     return jobs.jobs.map((job: any) => ({
       position: job.title,
@@ -48,7 +48,7 @@ export class JobService {
         career,
         location,
         page,
-        "1",
+        '1',
       );
       if (jobs.jobs.length > 0) {
         personalizedJobs.push({
