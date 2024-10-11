@@ -14,19 +14,19 @@ export class User extends Document {
   username: string;
 
   @Prop({ required: false })
-  employed: boolean;
+  isEmployed: boolean;
 
   @Prop()
-  job_title?: string;
+  title?: string;
 
   @Prop()
   company?: string;
 
   @Prop({ required: false })
-  student: boolean;
+  isStudent: boolean;
 
   @Prop({ required: false })
-  job_seeker: boolean;
+  isJobSeeker: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
