@@ -8,6 +8,7 @@ export class JoobleService {
     keyword: string,
     location: string,
     page: string,
+    resultOnPage: string,
   ): Promise<any> {
     const url = `https://jooble.org/api/${config.jooble.apiKey}`;
     try {
@@ -15,6 +16,7 @@ export class JoobleService {
         keywords: keyword,
         location: location,
         page: page,
+        ResultOnPage: resultOnPage,
       });
       return response.data;
     } catch (error) {

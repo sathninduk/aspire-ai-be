@@ -3,5 +3,5 @@ export interface Job {
   company: string;
   location: string;
   url: string;
-  course: string;
+  source: string;
 }
