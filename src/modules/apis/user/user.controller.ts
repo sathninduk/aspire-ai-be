@@ -108,4 +108,40 @@ export class UserController {
       res.status(500).send('An error occurred while updating User name');
     }
   }
+
+  @Put('answer-1')
+  async updateAnswer1(
+    @Req() req: Request,
+    @Res() res: Response,
+  ): Promise<void> {
+    const { number, answer_1 } = req.body;
+    try {
+      const UserResponse = await this.userService.updateAnswer1(
+        number,
+        answer_1,
+      );
+      res.send(UserResponse);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('An error occurred while updating User name');
+    }
+  }
+
+  @Put('answer-2')
+  async updateAnswer2(
+    @Req() req: Request,
+    @Res() res: Response,
+  ): Promise<void> {
+    const { number, answer_2 } = req.body;
+    try {
+      const UserResponse = await this.userService.updateAnswer2(
+        number,
+        answer_2,
+      );
+      res.send(UserResponse);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('An error occurred while updating User name');
+    }
+  }
 }
