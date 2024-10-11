@@ -1,7 +1,7 @@
 const config = {
   mongoDB: {
-    url: 'mongodb://localhost:27017/aspireai',
-    // url: 'mongodb+srv://sathnidukottage:C2ly3Xe72jQc7Pxu@devcluster.smp9t.mongodb.net/aspireai?retryWrites=true&w=majority&appName=DevCluster',
+    // url: 'mongodb://localhost:27017/aspireai',
+    url: 'mongodb+srv://sathnidukottage:C2ly3Xe72jQc7Pxu@devcluster.smp9t.mongodb.net/aspireai?retryWrites=true&w=majority&appName=DevCluster',
   },
   googleJobs: {
     clientId: '',
