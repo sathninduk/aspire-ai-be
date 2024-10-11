@@ -33,6 +33,12 @@ export class User extends Document {
 
   @Prop({ required: false })
   answer_2: string;
+
+  @Prop({ required: false })
+  skills: string[];
+
+  @Prop({ required: false })
+  careers: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
