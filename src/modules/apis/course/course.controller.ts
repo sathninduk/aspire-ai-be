@@ -24,4 +24,25 @@ export class CourseController {
       res.status(500).send('An error occurred while fetching response');
     }
   }
+
+  @Get('personalized')
+  async getPersonalizedCourseResponse(
+    @Req() req: Request,
+    @Res() res: Response,
+  ): Promise<void> {
+    // get number from query parameters
+    const number = Array.isArray(req.query.number)
+      ? req.query.number[0]
+      : req.query.number;
+
+    try {
+      const response = await this.courseService.getPersonalizedResponse(
+        number as string,
+      );
+      res.send(response);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('An error occurred while fetching response');
+    }
+  }
 }
